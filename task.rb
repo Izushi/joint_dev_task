@@ -5,9 +5,9 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-  p names.push("斎藤")
+  # p names.push("斎藤")
   
-  #p names << "斎藤" 
+  p names << "斎藤"  #pushメソッドよりも一般的
 end
 
 def q2
@@ -58,17 +58,17 @@ def q6
   # 以下に回答を記載
   
   #eachメソッド
-  numbers2 = []
-  numbers1.each do |number|
-    numbers2 << number * 10
-  end
-  p numbers2
-  
-  #mapメソッド
-  # numbers2 = numbers1.map do |number|
-  #   number * 10
+  # numbers2 = []
+  # numbers1.each do |number|
+  #   numbers2 << number * 10
   # end
   # p numbers2
+  
+  #mapメソッド・・・配列の要素それぞれに対して一定の操作を行った配列をつくるときにはmapメソッドが便利
+  numbers2 = numbers1.map do |number|
+    number * 10
+  end
+  p numbers2
   
 end
 
@@ -76,16 +76,22 @@ def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-
+  array.map!{|n| n.to_i} #破壊的メソッドを用いてarray自体を整数の配列に
+  
+  # array.map!(&:to_i) 
+  
   # 以下は変更しないで下さい
   p array
 end
 
 def q8
   programming_languages = %w(ruby php python javascript)
-
   # 以下に回答を記載
-
+# 　programming_languages.map!{|n| n.capitalize}
+# 　upper_case_programming_languages = programming_languages.map{|m| m.upcase}
+　
+  programming_languages.map!(&:capitalize)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
   p programming_languages
   p upper_case_programming_languages
@@ -95,28 +101,43 @@ def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-
+  names.each.with_index(1) do |name, i|
+    puts "会員No.#{i} #{name}さん"
+  end
+  
+  names.each_with_index do |name, i|
+    puts "会員No.#{i+1} #{name}さん"
+  end
 end
 
 def q10
   foods = %w(いか たこ うに しゃけ うにぎり うに軍艦 うに丼)
 
   # 以下に回答を記載
-
+  foods.each do |food|
+    if food.include?("うに")
+      puts "好物です"
+    else
+      puts "まぁまぁ好きです"
+    end
+  end
 end
 
 def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+  sorted_sports = sports.flatten.uniq
+  sorted_sports.each.with_index(1) do |sport, i|
+    puts "No#{i} #{sport}"
+  end
 end
 
 def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+　puts data[:user][:name]
 end
 
 def q13
@@ -124,14 +145,14 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
-
+  puts user_data.merge!(update_data)
 end
 
 def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  p data.keys
 end
 
 def q15
