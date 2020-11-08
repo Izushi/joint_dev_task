@@ -78,7 +78,7 @@ def q7
   # 以下に回答を記載
   array.map!{|n| n.to_i} #破壊的メソッドを用いてarray自体を整数の配列に
   
-  # array.map!(&:to_i) 
+  array.map!(&:to_i) #簡潔にかける方が好ましい
   
   # 以下は変更しないで下さい
   p array
@@ -87,9 +87,6 @@ end
 def q8
   programming_languages = %w(ruby php python javascript)
   # 以下に回答を記載
-# 　programming_languages.map!{|n| n.capitalize}
-# 　upper_case_programming_languages = programming_languages.map{|m| m.upcase}
-　
   programming_languages.map!(&:capitalize)
   upper_case_programming_languages = programming_languages.map(&:upcase)
   # 以下は変更しないで下さい
@@ -101,7 +98,7 @@ def q9
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
-  names.each.with_index(1) do |name, i|
+  names.each.with_index(1) do |name, i| #一般的
     puts "会員No.#{i} #{name}さん"
   end
   
@@ -127,8 +124,7 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-  sorted_sports = sports.flatten.uniq
-  sorted_sports.each.with_index(1) do |sport, i|
+  sports.flatten!uniq!each.with_index(1) do |sport, i|
     puts "No#{i} #{sport}"
   end
 end
@@ -160,7 +156,17 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-
+  if data1.has_key?(:age)
+    puts "OK"
+  else
+    puts "NG"
+  end
+  
+  if data2.has_key?(:age)
+    puts "OK"
+  else
+    puts "NG"
+  end
 end
 
 def q16
@@ -172,7 +178,9 @@ def q16
   ]
 
   # 以下に回答を記載
-
+   users.each do |user|
+     puts "私の名前は#{user[:name]}です。年齢は#{user[:age]}です。"
+   end
 end
 
 class UserQ17
