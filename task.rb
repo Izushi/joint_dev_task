@@ -156,17 +156,8 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.has_key?(:age)
-    puts "OK"
-  else
-    puts "NG"
-  end
-  
-  if data2.has_key?(:age)
-    puts "OK"
-  else
-    puts "NG"
-  end
+  puts data1.has_key?(:age) ? "OK" : "NG" #if文ではなく三項演算子を使う。
+  puts data2.has_key?(:age) ? "OK" : "NG"
 end
 
 def q16
