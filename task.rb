@@ -208,7 +208,7 @@ class UserQ18
   end
 
   def introduce
-    if @age == 32
+    if @age >= 32
       "こんにちは、#{@name}と申します。よろしくお願いいたします。"
     else
       "はいさいまいど〜、#{@name}です！！！"
@@ -242,7 +242,7 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  attr_reader :name, :age, :entry_fee
+  attr_reader :name, :age
 
   def initialize(name:, age:)
     @name = name
